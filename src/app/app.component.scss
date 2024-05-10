@@ -1,0 +1,31 @@
+.header{
+    position : fixed;
+    top : 0;
+    left : 0;
+    width: 100%;
+    background-color: darkgrey;
+    z-index: 100;
+  }
+  
+  .main {
+    // position : fixed;
+    position:absolute;
+    // display : flex;
+    // flex-direction: row;
+    top : 80px;
+    left:0;
+  }
+  
+  .nav{
+    left : 0;
+    min-width: 250px;
+    background-color: lightblue;
+    position: fixed;
+    min-height: 100vh;
+  }
+  
+  .contenu{
+    padding : 10px;
+    width: auto;
+    margin-left:250px;
+  }

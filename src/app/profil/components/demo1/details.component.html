@@ -1,0 +1,28 @@
+@if (suisJeConnecte) {
+    <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+
+        <div>
+            Nom : <input type="nom" formControlName = "nom">
+            @if (fg.controls["nom"].invalid && fg.controls["nom"].touched) 
+            {
+            <p style="color : red;">
+                {{fg.controls["nom"].errors | json}}
+            </p>
+            }
+        </div>
+        <div>
+            Liste de Series: <input type="text" formControlName = "listeseries">
+        </div>
+        <div>
+            Date de naissance : <input type="date" formControlName = "datenaissance">
+            @if (fg.controls["datenaissance"].invalid && fg.controls["datenaissance"].touched) 
+            {
+            <p style="color : red;">
+                {{fg.controls["datenaissance"].getError("ageError")}}
+            </p>
+            }
+        </div>
+        <button type="submit" [disabled]="fg.invalid">Valider</button>
+        </form>
+}
+@else {<p>Il faut ce connecter</p>}

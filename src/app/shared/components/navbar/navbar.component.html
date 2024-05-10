@@ -1,0 +1,16 @@
+<div class="nav">
+    <ul>
+    @for (s of listeLien; track $index) {
+        
+        <li><span (click)="showChildren($index)">{{s.name}}</span>
+        <ul *ngIf="s.isChildrenVisible">
+            @for (sc of s.children; track $index) {
+                <li>
+                    <a routerLink="{{sc.url}}">{{sc.name}}</a>
+                </li>
+            }
+        </ul>
+        </li>
+    }
+    </ul>
+</div>

@@ -1,0 +1,33 @@
+@if (suisJeConnecte) {
+    <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+
+        <div>
+            Nom : <input type="nom" formControlName = "nom">
+            @if (fg.controls["nom"].invalid && fg.controls["nom"].touched) 
+            {
+            <p style="color : red;">
+                {{fg.controls["nom"].errors | json}}
+            </p>
+            }
+        </div>
+        <!-- <div *ngFor="let c of getArray().controls;let i = index">
+            <p>{{i+1}} <input type="text" [formControlName]="i"></p>
+            Liste de Series: <input type="text" formControlName = "listeseries">
+        </div> -->
+        <div formArrayName="listeseries">
+            <div *ngFor="let item of fg.get('listeseries')?.controls;let i=index "></div>
+        </div>
+        <div>
+            Date de naissance : <input type="date" formControlName = "datenaissance">
+            @if (fg.controls["datenaissance"].invalid && fg.controls["datenaissance"].touched) 
+            {
+            <p style="color : red;">
+                {{fg.controls["datenaissance"].getError("ageError")}}
+            </p>
+            }
+        </div>
+        <button type="submit" [disabled]="fg.invalid">Valider</button>
+        </form>
+}
+@else {<p>Il faut ce connecter</p>}
+<h1>Il faut ce connecter</h1>
